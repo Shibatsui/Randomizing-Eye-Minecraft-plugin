@@ -1,0 +1,9 @@
+main: com.shibatsu.RandomizingEye.Main
+name: RandomizingEye
+author: shibatsu
+version: 1.0
+
+api-version: 1.13
+
+commands: 
+  RandomizingEye: 

@@ -1,4 +1,4 @@
-### [Latest Release](https://github.com/Shibatsui/Randomizing-Eye-Minecraft-plugin/releases/tag/1.0)
+### [Latest Release](https://github.com/Shibatsui/Randomizing-Eye-Minecraft-plugin/releases/tag/v1.1)
 ### Setup
 Requires Spigot 1.13+
 

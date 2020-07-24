@@ -8,7 +8,7 @@ Use `/randomizingeye start` to turn on.
 
 Use `/randomizingeye stop` to turn off.
 
-Added parameter `all` for both commands.
+Parameter `all` for both commands impliments for all online players.
 ### Features
 * Some blocks like obsidian, portals, bedrock, end portal frame, are blacklisted, so game can be beaten.
 * You can break or use block before you look away from it.

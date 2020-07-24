@@ -7,6 +7,8 @@ Put the `RandomizingEye.jar` into your `plugins` folder.
 Use `/randomizingeye start` to turn on.
 
 Use `/randomizingeye stop` to turn off.
+
+Added parameter `all` for both commands.
 ### Features
 * Some blocks like obsidian, portals, bedrock, end portal frame, are blacklisted, so game can be beaten.
 * You can break or use block before you look away from it.

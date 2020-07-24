@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
+import org.bukkit.Bukkit;
 import org.bukkit.FluidCollisionMode;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -57,18 +58,55 @@ public class Main extends JavaPlugin implements Listener {
 				sender.sendMessage("[RandomizingEye] " + "Sorry! This command is players only!");
 				return false;
 			}
+			if (args.length == 0) {
+				return false;
+			}
 			if (args[0].equalsIgnoreCase("start")) {
-				activePlayers.add(sender.getName());
-				sender.sendMessage("[RandomizingEye] " + "You have recieved power of Randomizing Eye!");
-				return true;
+				if (args.length == 2 && args[1].equalsIgnoreCase("all")) {
+					for(Player player : Bukkit.getOnlinePlayers()) {
+						if(!activePlayers.contains(player.getName())) {
+							activePlayers.add(player.getName());
+							player.sendMessage("[RandomizingEye] " + "You have recieved power of Randomizing Eye!");
+						}
+					}
+					return true;
+				}
+				if(activePlayers.contains(sender.getName())) {
+					sender.sendMessage("[RandomizingEye] " + "You already have power of Randomizing Eye!");
+					return false;
+				}
+				else {
+					activePlayers.add(sender.getName());
+					sender.sendMessage("[RandomizingEye] " + "You have recieved power of Randomizing Eye!");
+					return true;
+				}
 			}
 			if (args[0].equalsIgnoreCase("stop")) {
-				activePlayers.remove(sender.getName());
-				if(lastBlocks.containsKey(sender.getName())) {
-					lastBlocks.remove(sender.getName());
+				if (args.length == 2 && args[1].equalsIgnoreCase("all")) {
+					for(Player player : Bukkit.getOnlinePlayers()) {
+						if(activePlayers.contains(player.getName())) {
+							activePlayers.remove(sender.getName());
+							if(lastBlocks.containsKey(sender.getName())) {
+								lastBlocks.remove(sender.getName());
+							}
+							sender.sendMessage("[RandomizingEye] " + "You have lost control on Randomizing Eye!");
+							return true;
+						}
+					}
+					return true;
 				}
-				sender.sendMessage("[RandomizingEye] " + "You have lost control on Randomizing Eye!");
-				return true;
+				if(activePlayers.contains(sender.getName())) {
+					activePlayers.remove(sender.getName());
+					if(lastBlocks.containsKey(sender.getName())) {
+						lastBlocks.remove(sender.getName());
+					}
+					sender.sendMessage("[RandomizingEye] " + "You have lost control on Randomizing Eye!");
+					return true;
+				}
+				else {
+					sender.sendMessage("[RandomizingEye] " + "You cannot stop what, not started yet..");
+					return false;
+				}
 			}
 		}
 		return false;
